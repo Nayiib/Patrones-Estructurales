@@ -42,4 +42,9 @@ public class Adapter extends AbsEngineer {
         return pnlPersonaje;
     }
 
+    @Override
+    public void run() {
+
+    }
+
 }

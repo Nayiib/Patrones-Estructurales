@@ -1,8 +1,6 @@
 package presentacion.vistas;
 
 import java.awt.Canvas;
-import java.awt.Graphics;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import presentacion.controladores.EngineerController;
 import presentacion.modelo.Game;
@@ -15,8 +13,6 @@ public class EngineerView extends javax.swing.JFrame {
 
     private Game modelo;
     private EngineerController ctlEngineerController;
-
-    
 
     public EngineerView(Game modelo) {
         this.modelo = modelo;
@@ -33,13 +29,14 @@ public class EngineerView extends javax.swing.JFrame {
 
         getCtlEngineerController();
 
-        
+        lblCert.setVisible(false);
+        lblStop.setVisible(false);
     }
 
     public void asignarListeners() {
         lblClose.addMouseListener(getCtlEngineerController());
         lblBack.addMouseListener(getCtlEngineerController());
-        lblBgEngWindow.addMouseListener(getCtlEngineerController());
+        //lblBgEngWindow.addMouseListener(getCtlEngineerController());
         lblIngeniar.addMouseListener(getCtlEngineerController());
     }
 
@@ -74,10 +71,16 @@ public class EngineerView extends javax.swing.JFrame {
         return lblBgEngWindow;
     }
 
-    
-
     public JLabel getLblEngr() {
         return lblEngr;
+    }
+
+    public JLabel getLblCert() {
+        return lblCert;
+    }
+
+    public JLabel getLblStop() {
+        return lblStop;
     }
 
     /**
@@ -94,6 +97,8 @@ public class EngineerView extends javax.swing.JFrame {
         lienzo = new java.awt.Canvas();
         lblIngeniar = new javax.swing.JLabel();
         lblEngr = new javax.swing.JLabel();
+        lblCert = new javax.swing.JLabel();
+        lblStop = new javax.swing.JLabel();
         lblBgEngWindow = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,6 +127,19 @@ public class EngineerView extends javax.swing.JFrame {
         getContentPane().add(lblEngr);
         lblEngr.setBounds(60, 64, 326, 261);
 
+        lblCert.setFont(new java.awt.Font("Comic Sans MS", 1, 20)); // NOI18N
+        lblCert.setForeground(new java.awt.Color(255, 255, 255));
+        lblCert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCert.setText("Certificación");
+        getContentPane().add(lblCert);
+        lblCert.setBounds(520, 290, 130, 40);
+
+        lblStop.setFont(new java.awt.Font("Comic Sans MS", 1, 20)); // NOI18N
+        lblStop.setForeground(new java.awt.Color(255, 255, 255));
+        lblStop.setText("Descansar");
+        getContentPane().add(lblStop);
+        lblStop.setBounds(530, 60, 97, 30);
+
         lblBgEngWindow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/images/background.jpg"))); // NOI18N
         getContentPane().add(lblBgEngWindow);
         lblBgEngWindow.setBounds(0, 0, 800, 400);
@@ -133,9 +151,11 @@ public class EngineerView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblBgEngWindow;
+    private javax.swing.JLabel lblCert;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblEngr;
     private javax.swing.JLabel lblIngeniar;
+    private javax.swing.JLabel lblStop;
     private java.awt.Canvas lienzo;
     // End of variables declaration//GEN-END:variables
 }

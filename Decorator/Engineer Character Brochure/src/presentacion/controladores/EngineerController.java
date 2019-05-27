@@ -47,29 +47,54 @@ public class EngineerController implements MouseListener {
                 modelo.getVentanaEng().getLblEngr().setIcon(null);
                 
                 modelo.getPreDegreeEngr().setIsAnimado(false);
+                
+                if (modelo.getCertEngineer() != null) {
+                    modelo.getCertEngineer().setIsAnimado(false);
+                    modelo.setCertEngineer(null);
+                }
             }
             
-            modelo.getVentanaEng().getLblEngr().setVisible(true);
-            modelo.getVentanaEng().getLienzo().setVisible(false);
+            ventanaEngineer.getLblEngr().setVisible(true);
+            ventanaEngineer.getLienzo().setVisible(false);
+            
+            ventanaEngineer.getLblCert().setVisible(false);
+            ventanaEngineer.getLblCert().removeMouseListener(this);
+            
+            ventanaEngineer.getLblStop().setVisible(false);
+            ventanaEngineer.getLblStop().removeMouseListener(this);
             
             modelo.getVentanaEngFactory().setVisible(true);
             modelo.getVentanaEng().setVisible(false);
         } else if (e.getSource().equals(ventanaEngineer.getLblIngeniar())) {
             if (modelo.isChooseAbsEngr()) {
-                modelo.getVentanaEng().getLienzo().setVisible(false);
+                ventanaEngineer.getLienzo().setVisible(false);
                 
                 modelo.getOrcoAdapter().ingeniar(ventanaEngineer.getLienzo());
             } else {
-                modelo.getVentanaEng().getLienzo().setVisible(true);
-                modelo.getVentanaEng().getLblEngr().setVisible(false);
+                ventanaEngineer.getLienzo().setVisible(true);
+                ventanaEngineer.getLblEngr().setVisible(false);
                 
                 modelo.getPreDegreeEngr().ingeniar(ventanaEngineer.getLienzo());
+                
+                ventanaEngineer.getLblCert().setVisible(true);
+                ventanaEngineer.getLblCert().addMouseListener(this);
+                
+                ventanaEngineer.getLblStop().setVisible(true);
+                ventanaEngineer.getLblStop().addMouseListener(this);
             }
-        } else if (e.getSource().equals(ventanaEngineer.getLblBgEngWindow())) {
+        } else if (e.getSource().equals(ventanaEngineer.getLblCert())) {
+            modelo.decorateCertEngr();
+            modelo.getCertEngineer().ingeniar(ventanaEngineer.getLienzo());
+        } else if (e.getSource().equals(ventanaEngineer.getLblStop())) {
             if (modelo.isChooseAbsEngr()) {
                 
             } else {
                 modelo.getPreDegreeEngr().setIsAnimado(false);
+                System.out.println("!!!!" + modelo.getCertEngineer());
+                if (modelo.getCertEngineer() != null) {
+                    modelo.getCertEngineer().setIsAnimado(false);
+                    modelo.setCertEngineer(null);
+                }
             }
         }
     }
@@ -91,8 +116,9 @@ public class EngineerController implements MouseListener {
         
         if ((e.getSource().equals(ventanaEngineer.getLblClose()))
                 || (e.getSource().equals(ventanaEngineer.getLblBack()))
-                || (e.getSource().equals(ventanaEngineer.getLblIngeniar()))) {
-            
+                || (e.getSource().equals(ventanaEngineer.getLblIngeniar()))
+                || (e.getSource().equals(ventanaEngineer.getLblCert()))
+                || (e.getSource().equals(ventanaEngineer.getLblStop()))) {
             ventanaEngineer.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
         
@@ -104,7 +130,9 @@ public class EngineerController implements MouseListener {
         
         if (e.getSource().equals(ventanaEngineer.getLblClose())
                 || e.getSource().equals(ventanaEngineer.getLblBack())
-                || (e.getSource().equals(ventanaEngineer.getLblIngeniar()))) {
+                || (e.getSource().equals(ventanaEngineer.getLblIngeniar()))
+                || (e.getSource().equals(ventanaEngineer.getLblCert()))
+                || (e.getSource().equals(ventanaEngineer.getLblStop()))) {
             ventanaEngineer.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         }
         

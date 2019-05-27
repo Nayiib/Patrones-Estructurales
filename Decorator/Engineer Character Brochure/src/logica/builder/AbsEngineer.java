@@ -1,6 +1,7 @@
 package logica.builder;
 
 import java.awt.Component;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import logica.abstractfactory.products.Accessory;
 import logica.abstractfactory.products.Tool;
@@ -10,24 +11,23 @@ import logica.abstractfactory.products.Vehicle;
  *
  * @author David Bohorquez
  */
-public abstract class AbsEngineer {
+public abstract class AbsEngineer implements Runnable {
 
     protected int posX;
     protected int posY;
-    
-    protected boolean isAnimado;
 
     protected Accessory accessory;
     protected Tool tool;
     protected Vehicle vehicle;
 
-    protected ImageIcon[] imgsEngr;
-
-    protected int numImage;
-
+    protected BufferedImage dobleBuffre;
     protected Component lienzo;
 
+    protected ImageIcon[] imgsEngr;
     protected ImageIcon bkgdLienzo;
+
+    protected int numImage;
+    protected boolean isAnimado;
 
     public AbsEngineer() {
         imgsEngr = new ImageIcon[4];
@@ -59,8 +59,8 @@ public abstract class AbsEngineer {
         this.posY = posY;
     }
 
-    public ImageIcon getAccessory() {
-        return accessory.operation();
+    public Accessory getAccessory() {
+        return accessory;
     }
 
     public void setAccessory(Accessory accessory) {
@@ -90,7 +90,7 @@ public abstract class AbsEngineer {
     public void setImgsEngr(ImageIcon[] imgsEngr) {
         this.imgsEngr = imgsEngr;
     }
-    
+
     public void setIsAnimado(boolean isAnimado) {
         this.isAnimado = isAnimado;
     }

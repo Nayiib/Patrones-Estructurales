@@ -12,8 +12,6 @@ public class Engineer extends AbsEngineer implements Runnable {
 
     private Thread drawThread;
 
-    private BufferedImage dobleBuffre;
-
     public Engineer() {
         isAnimado = false;
     }

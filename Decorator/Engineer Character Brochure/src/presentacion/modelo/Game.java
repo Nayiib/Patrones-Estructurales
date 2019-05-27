@@ -17,6 +17,7 @@ import logica.abstractfactory.products.Accessory;
 import logica.builder.AbsEngineer;
 import logica.builder.Director;
 import logica.builder.PreDegreeEngineer;
+import logica.decorator.CertificateEngineer;
 
 /**
  *
@@ -37,11 +38,13 @@ public class Game {
     private AbsEngineer preDegreeEngr;
 
     private AbsEngineer orcoAdapter;
-    
+
     private boolean chooseAbsEngr;
 
+    private AbsEngineer certEngineer;
+
     public Game() {
-        
+
     }
 
     public void iniciar() {
@@ -100,6 +103,10 @@ public class Game {
             orcoAdapter = new Adapter(this);
         }
         return orcoAdapter;
+    }
+
+    public void decorateCertEngr() {
+        certEngineer = new CertificateEngineer(preDegreeEngr);
     }
 
     public void onListeners(JLabel[] labels, MouseListener controller) {
@@ -212,4 +219,11 @@ public class Game {
         this.chooseAbsEngr = chooseAbsEngr;
     }
 
+    public AbsEngineer getCertEngineer() {
+        return certEngineer;
+    }
+
+    public void setCertEngineer(AbsEngineer certEngineer) {
+        this.certEngineer = certEngineer;
+    }
 }
