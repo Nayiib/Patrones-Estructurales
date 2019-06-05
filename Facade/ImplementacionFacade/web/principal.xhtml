@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facade Implementation</title>
+    </h:head>
+    <h:body>
+        <h:form>        
+            <h:panelGrid>
+                <h:outputLabel value="SELECCIONE UN SERVICIO: "                            
+                               style="font-family: Algerian"/> 
+                <h:outputLabel value="Servicios: " 
+                               style="font-family: Arial Black"/>                                
+                <h:commandButton id="s1" value="LlamarServicio1" action="servicio" actionListener="#{facadeImplementation.usarServicio1()}"/>
+                <h:commandButton id="s2" value="LlamarServicio2" action="servicio" actionListener="#{facadeImplementation.usarServicio2()}"/>
+                <h:commandButton id="s3" value="LlamarServicio3" action="servicio" actionListener="#{facadeImplementation.usarServicio3()}"/>
+                <h:commandButton id="s4" value="LlamarServicio4" action="servicio" actionListener="#{facadeImplementation.usarServicio4()}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
